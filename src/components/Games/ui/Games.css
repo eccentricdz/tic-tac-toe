@@ -4,9 +4,20 @@
     gap: 3rem;
     align-items: center;
     position: relative;
+    --gutter: 35;
 
     .actions {
         position: absolute;
-        bottom: -35%;
+        bottom: calc(var(--gutter) * -1%);
+    }
+
+    .score-board {
+        top: calc(var(--gutter) * -1%);
+    }
+}
+
+@media (max-width: 600px) {
+    .games {
+        --gutter: 30;
     }
 }
