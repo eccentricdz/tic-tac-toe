@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
+:root {
+  --foreground-color: white;
+  --foreground-color-1: #404040;
+  --foreground-color-2: #909090;
+  --background-color: black;
+  --background-color-1: #151515;
+  --transition-duration: 0.3s;
+
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+    font-size: 1.3rem;
+  }
+
+}
+
+@keyframes text-gradient {
+  to {
+    background-position: var(--bg-size) 0;
+  }
+}

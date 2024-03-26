@@ -1,0 +1,12 @@
+.games {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+
+    .actions {
+        position: absolute;
+        bottom: -35%;
+    }
+}

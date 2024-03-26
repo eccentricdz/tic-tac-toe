@@ -1,0 +1,58 @@
+button {
+    outline: none;
+    background: none;
+    border: 1px solid var(--foreground-color);
+    padding: 0.5rem 1rem;
+    color: var(--foreground-color);
+    cursor: pointer;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.disabled {
+        --foreground-color: var(--foreground-color-1);
+        cursor: initial;
+    }
+
+    &.primary {
+        &:not(.disabled) {
+            --bg-size: 400%;
+            background: linear-gradient(70deg,
+                    var(--foreground-color),
+                    var(--foreground-color-2),
+                    var(--foreground-color)) 0 0 / var(--bg-size) 100%;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-gradient 7s linear infinite;
+
+            &:hover {
+                background: var(--foreground-color);
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    }
+
+    &.secondary {
+        border: none;
+        color: var(--foreground-color-2);
+        transition: color 0.2s;
+
+        &.disabled {
+            --foreground-color-2: var(--foreground-color);
+        }
+
+        &:not(.disabled):hover {
+            color: var(--foreground-color)
+        }
+
+        &:first-of-type {
+            padding-left: 0;
+        }
+
+        &:last-of-type {
+            padding-right: 0;
+        }
+    }
+}

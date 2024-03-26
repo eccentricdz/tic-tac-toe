@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+.game {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: flex-start;
+
+    .board {
+        --board-border: 4px solid var(--foreground-color);
+        transition: all var(--transition-duration) ease-in-out;
+
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        border: var(--board-border);
+        color: var(--foreground-color);
+
+        .row {
+            display: flex;
+            flex-direction: row;
+
+            &:not(:last-of-type) {
+                border-bottom: var(--board-border);
+            }
+
+            .slot {
+                width: 100px;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Urbanist', sans-serif;
+                font-weight: 500;
+                font-size: 40px;
+                user-select: none;
+
+                &:has(.dimmed) {
+                    color: var(--foreground-color-1);
+                    cursor: pointer;
+                }
+
+                &:not(:last-of-type) {
+                    border-right: var(--board-border);
+                }
+            }
+        }
+
+        .winco {
+            background-color: var(--foreground-color);
+            position: absolute;
+
+            &.winco-row {
+                height: 4px;
+                animation: winning-line-horizontal var(--transition-duration) forwards;
+                transform: translateY(-50%);
+
+
+                &.winco-row-0 {
+                    top: calc(100% / 6);
+                }
+
+                &.winco-row-1 {
+                    top: calc(100% / 6 * 3);
+                }
+
+                &.winco-row-2 {
+                    top: calc(100% / 6 * 5);
+                }
+            }
+
+            &.winco-column {
+                width: 4px;
+                animation: winning-line-vertical var(--transition-duration) forwards;
+                transform: translateX(-50%);
+
+                &.winco-column-0 {
+                    left: calc(100% / 6);
+                }
+
+                &.winco-column-1 {
+                    left: calc(100% / 6 * 3);
+                }
+
+                &.winco-column-2 {
+                    left: calc(100% / 6 * 5);
+                }
+            }
+
+            &.winco-diagonal {
+                height: 4px;
+                left: 50%;
+                top: calc(100% / 6 * 3);
+                animation: winning-line-diagonal var(--transition-duration) forwards;
+
+                &.winco-diagonal-0 {
+                    transform: translateX(-50%) rotate(45deg);
+                }
+
+                &.winco-diagonal-1 {
+                    transform: translateX(-50%) rotate(-45deg);
+                }
+            }
+        }
+    }
+
+    &:not(.settled) .status {
+        --bg-size: 400%;
+        background: linear-gradient(70deg,
+                var(--foreground-color),
+                var(--foreground-color-2),
+                var(--foreground-color)) 0 0 / var(--bg-size) 100%;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: text-gradient 7s linear infinite;
+    }
+
+    &.settled {
+        .board {
+            color: var(--foreground-color-1);
+            --board-border: 4px solid var(--foreground-color-1);
+        }
+    }
+}
+
+@keyframes winning-line-horizontal {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes winning-line-vertical {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 100%;
+    }
+}
+
+@keyframes winning-line-diagonal {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 142%;
+    }
+}
