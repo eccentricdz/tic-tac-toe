@@ -21,7 +21,8 @@ export const GamesUI: React.FC = () => {
         <ScoreBoard {...score} />
         <Carousel
           windowSize={{
-            width: 308,
+            // TODO: Make this responsive
+            width: Math.min((window.innerWidth * 60) / 100, 300) + 8,
           }}
           itemCount={gamesCount}
           getHeader={(index) => <p>Game {index + 1}</p>}
